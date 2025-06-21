@@ -2,46 +2,39 @@ package co.tiagoaguiar.netflixremake
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlin.math.log
+import co.tiagoaguiar.netflixremake.model.Category
+import co.tiagoaguiar.netflixremake.model.Movie
 
-class MainActivity : AppCompatActivity() {
+class MovieAdapter : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val categories = mutableListOf<Category>()
+        for (j in 0 until 10){
+            val movies = mutableListOf<Movie>()
+            for (i in 0 until 15){
+                val movie = Movie(R.drawable.movie)
+                movies.add(movie)
+            }
+            val category = Category ("cat $j", movies)
+            categories.add(category)
+        }
 
-        val adapter = MainAdapter()
+
+
+
+        val adapter = MainAdapter(movies)
         val rv: RecyclerView = findViewById(R.id.rv_main)
-        rv.layoutManager = LinearLayoutManager(this)
+        rv.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
         rv.adapter = adapter
 
     }
-
-    private inner class MainAdapter : RecyclerView.Adapter<MainAdapter.MovieViewHolder>() {
-
-        override fun onCreateViewHolder(parent: ViewGroup, p1: Int): MovieViewHolder {
-            val view = layoutInflater.inflate(R.layout.movie_item, parent, false)
-            return MovieViewHolder(view)
-        }
-
-        override fun onBindViewHolder(p0: MovieViewHolder, p1: Int) {
-
-        }
-
-        override fun getItemCount(): Int {
-            return 60
-        }
-
-
-        private inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        }
-
-
-    }
 }
+
+
+
+
+
