@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_main"
+        android:id="@+id/rv_category"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         app:layout_constraintTop_toBottomOf="@id/txt_title"
@@ -28,5 +28,7 @@
         android:background="@color/black"
         tools:itemCount="5"
         tools:listitem="@layout/movie_item" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
